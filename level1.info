@@ -6,8 +6,8 @@
 ; ------------------------------------------------------------------------------
 ; Custom installation profile
 ; ------------------------------------------------------------------------------
-name = Level 2
-description = Custom installation profile with pre-setup environment. level1.
+name = Level 1
+description = Custom installation profile with pre-setup environment. Level 1.
 version = 7.x-1.0
 core = 7.x
 ; Uncomment the following line if you would like this profile to be loaded
@@ -44,6 +44,5 @@ dependencies[] = module_filter
 dependencies[] = globalredirect
 dependencies[] = pathauto
 dependencies[] = transliteration
-dependencies[] = libraries
 dependencies[] = rules
 dependencies[] = rules_admin
