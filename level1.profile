@@ -11,7 +11,7 @@
 /**
  * Define minimum execution time required to operate.
  */
-define('DRUPAL_MINIMUM_MAX_EXECUTION_TIME', 60);
+define('LEVEL1_DRUPAL_MINIMUM_MAX_EXECUTION_TIME', 60);
 
 /**
  * Implements hook_install_tasks().
