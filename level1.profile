@@ -16,13 +16,13 @@ define('DRUPAL_MINIMUM_MAX_EXECUTION_TIME', 60);
 /**
  * Implements hook_install_tasks().
  */
-function level2_install_tasks($install_state) {
+function level1_install_tasks($install_state) {
   $tasks = array();
-  $tasks['level2_task_add_menu_items'] = array(
+  $tasks['level1_task_add_menu_items'] = array(
     'type' => 'normal',
     'run' => INSTALL_TASK_RUN_IF_REACHED,
   );
-  $tasks['level2_task_add_default_pages'] = array(
+  $tasks['level1_task_add_default_pages'] = array(
     'type' => 'normal',
     'run' => INSTALL_TASK_RUN_IF_REACHED,
   );
@@ -33,7 +33,7 @@ function level2_install_tasks($install_state) {
 /**
  * Add most used links.
  */
-function level2_task_add_menu_items() {
+function level1_task_add_menu_items() {
   // Remove all default shortcut links because they are useless.
   $shortcut_links = db_select('menu_links', 'l')
     ->fields('l', array('mlid'))
@@ -77,7 +77,7 @@ function level2_task_add_menu_items() {
 /**
  * Create 403 and 404 pages.
  */
-function level2_task_add_default_pages() {
+function level1_task_add_default_pages() {
   // Common details.
   $page = new stdClass();
   $page->type = 'page';
@@ -113,7 +113,7 @@ function level2_task_add_default_pages() {
  *
  * Allows the profile to alter the site configuration form.
  */
-function level2_form_install_configure_form_alter(&$form, $form_state) {
+function level1_form_install_configure_form_alter(&$form, $form_state) {
   // Prepare some variables to be used as default values of the final form.
   $server_name = $_SERVER['SERVER_NAME'];
   // Check if there is a dot in the server name. This is aimed for local
@@ -139,7 +139,7 @@ function level2_form_install_configure_form_alter(&$form, $form_state) {
 /**
  * Implements hook_install_tasks_alter().
  */
-function level2_install_tasks_alter(&$tasks, $install_state){
+function level1_install_tasks_alter(&$tasks, $install_state){
   global $install_state;
   // Skip the language selection screen and set the language to English by
   // default.
