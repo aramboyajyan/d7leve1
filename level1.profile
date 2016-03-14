@@ -85,15 +85,14 @@ function level1_form_install_configure_form_alter(&$form, $form_state) {
   if (!strpos($server_name, '.')) {
     $server_name = $server_name . '.com';
   }
-  $admin_email = 'webmaster@' . $server_name;
 
   // Pre-populate the site name with the server name.
   $form['site_information']['site_name']['#default_value'] = $_SERVER['SERVER_NAME'];
   // Set the default admin email address to "admin@domain.com".
-  $form['site_information']['site_mail']['#default_value'] = $admin_email;
+  $form['site_information']['site_mail']['#default_value'] = 'contact@' . $server_name;
   // Set the default admin username and email address.
   $form['admin_account']['account']['name']['#default_value'] = 'admin';
-  $form['admin_account']['account']['mail']['#default_value'] = $admin_email;
+  $form['admin_account']['account']['mail']['#default_value'] = 'webmaster@' . $server_name;
   // Set default country to US.
   $form['server_settings']['site_default_country']['#default_value'] = 'US';
 }
