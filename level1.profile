@@ -22,10 +22,6 @@ function level1_install_tasks($install_state) {
     'type' => 'normal',
     'run' => INSTALL_TASK_RUN_IF_REACHED,
   );
-  $tasks['level1_task_add_default_pages'] = array(
-    'type' => 'normal',
-    'run' => INSTALL_TASK_RUN_IF_REACHED,
-  );
 
   return $tasks;
 }
@@ -72,40 +68,6 @@ function level1_task_add_menu_items() {
 
   // Update the menu router information.
   menu_rebuild();
-}
-
-/**
- * Create 403 and 404 pages.
- */
-function level1_task_add_default_pages() {
-  // Common details.
-  $page = new stdClass();
-  $page->type = 'page';
-  $page->language = LANGUAGE_NONE;
-  node_object_prepare($page);
-  $page->status = NODE_PUBLISHED;
-  $page->uid = 1;
-  $page->body[LANGUAGE_NONE][0]['format'] = 'filtered_html';
-  // Home page.
-  $home = clone $page;
-  $home->title = 'Home';
-  $home->body[LANGUAGE_NONE][0]['value'] = 'Placeholder';
-  // 403.
-  $access_denied = clone $page;
-  $access_denied->title = 'Access Denied';
-  $access_denied->body[LANGUAGE_NONE][0]['value'] = t('You do not have enough permissions to access this page. Please <a href="@login">login</a> to continue.', array('@login' => url('user/login')));
-  // 404.
-  $not_found = clone $page;
-  $not_found->title = 'Page Not Found';
-  $not_found->body[LANGUAGE_NONE][0]['value'] = t('The page you requested has not been found. Click <a href="@home">here</a> to go back to the home page.', array('@home' => url('<front>')));
-  // Save pages.
-  node_save($home);
-  node_save($access_denied);
-  node_save($not_found);
-  // Set them up as default pages on 403/404 errors.
-  variable_set('site_frontpage', 'node/' . $home->nid);
-  variable_set('site_403', 'node/' . $access_denied->nid);
-  variable_set('site_404', 'node/' . $not_found->nid);
 }
 
 /**
