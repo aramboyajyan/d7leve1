@@ -2,6 +2,19 @@
 
 Custom installation profile for quicker development of new Drupal websites.
 
+#### Usage
+
+Clone the repo and place it in the `/profiles` directory of your installation:
+
+    $ cd /path/to/your/installation
+    $ # Just to make it more obvious that you need to place this in /profiles dir.
+    $ cd profiles
+    $ git clone https://github.com/aramboyajyan/d7level1 level1
+
+Start the Drupal installation, and you will see a new option for installing the "Level 1" profile.
+
+#### What's included
+
 The following actions are executed upon installation:
 
 - Text formats created: `Filtered HTML` and `Full HTML`.
